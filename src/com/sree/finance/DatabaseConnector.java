@@ -4,8 +4,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -96,5 +100,46 @@ public class DatabaseConnector extends SQLiteOpenHelper {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public Map<String,String> getCategory(){
+		String query = "SELECT * from category";
+		String key = "";
+		String val = "";
+		Map<String,String> map = new HashMap<String, String>();
+		System.out.println("Inside get category start");
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor result = db.rawQuery(query, null);
+		System.out.println("Inside get category after cursor");
+		if(result.moveToFirst()){
+			do{
+				key = result.getString(1);
+				val = result.getString(2);
+				map.put(key, val);
+			}while(result.moveToNext());
+			
+		}
+		System.out.println("Inside get category after all");
+		return map;
+	}
+	
+	public Cursor getIncome(){
+		String query = "SELECT * from income";
+		System.out.println("Inside get income start");
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor result = db.rawQuery(query, null);
+		System.out.println("Inside get income after cursor");
+		return result;
+	}
+	
+	public Cursor getExpense(){
+		String query = "SELECT * from expense";
+		System.out.println("Inside get expense start");
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor result = db.rawQuery(query, null);
+		System.out.println("Inside get expense after cursor");
+		return result;
+	}
+	
+	
 
 }

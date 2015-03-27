@@ -49,6 +49,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+          <activity
+            android:name=".AddIncomeActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.sree.finance.AddIncomeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+          <activity
+            android:name=".AddExpenseActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.sree.finance.AddExpenseActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

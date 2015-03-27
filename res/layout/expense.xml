@@ -1,14 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/expenseMainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:columnCount="3"
+    android:orientation="horizontal" >
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Expense"
+        android:id="@+id/expenseHeadingTextView"
+        android:layout_columnSpan="3"
+        android:layout_gravity="fill_horizontal"
+        android:gravity="center_horizontal"
+        android:text="@string/expenseHeading"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/holo_green_dark" />
+
+    <TextView
+        android:id="@+id/expenseErrorTextView"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_gravity="fill_horizontal"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <TextView
+        android:id="@+id/expenseCatView1"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/expenseAmtView1"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseBudView1"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseCatView2"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseAmtView2"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseBudView2"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseCatView3"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseAmtView3"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseBudView3"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseCatView4"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseAmtView4"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseBudView4"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseCatView5"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseAmtView5"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/expenseBudView5"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/addexpenseDetailButton"
+        android:layout_column="1"
+        android:layout_gravity="center"
+        android:layout_row="6"
+        android:text="@string/addExpense_btn_text" />
+
+</GridLayout>

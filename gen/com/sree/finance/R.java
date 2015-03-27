@@ -26,28 +26,70 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f080000;
-        public static final int action_settings=0x7f080005;
+        public static final int action_settings=0x7f08002a;
+        public static final int addIncomeDetailButton=0x7f080029;
+        public static final int addexpenseDetailButton=0x7f080016;
+        public static final int expenseAmtView1=0x7f080008;
+        public static final int expenseAmtView2=0x7f08000b;
+        public static final int expenseAmtView3=0x7f08000e;
+        public static final int expenseAmtView4=0x7f080011;
+        public static final int expenseAmtView5=0x7f080014;
+        public static final int expenseBudView1=0x7f080009;
+        public static final int expenseBudView2=0x7f08000c;
+        public static final int expenseBudView3=0x7f08000f;
+        public static final int expenseBudView4=0x7f080012;
+        public static final int expenseBudView5=0x7f080015;
         public static final int expenseButton=0x7f080002;
+        public static final int expenseCatView1=0x7f080007;
+        public static final int expenseCatView2=0x7f08000a;
+        public static final int expenseCatView3=0x7f08000d;
+        public static final int expenseCatView4=0x7f080010;
+        public static final int expenseCatView5=0x7f080013;
+        public static final int expenseErrorTextView=0x7f080006;
+        public static final int expenseHeadingTextView=0x7f080005;
+        public static final int expenseMainLayout=0x7f080004;
+        public static final int incomeAmtView1=0x7f08001b;
+        public static final int incomeAmtView2=0x7f08001e;
+        public static final int incomeAmtView3=0x7f080021;
+        public static final int incomeAmtView4=0x7f080024;
+        public static final int incomeAmtView5=0x7f080027;
+        public static final int incomeBudView1=0x7f08001c;
+        public static final int incomeBudView2=0x7f08001f;
+        public static final int incomeBudView3=0x7f080022;
+        public static final int incomeBudView4=0x7f080025;
+        public static final int incomeBudView5=0x7f080028;
         public static final int incomeButton=0x7f080001;
+        public static final int incomeCatView1=0x7f08001a;
+        public static final int incomeCatView2=0x7f08001d;
+        public static final int incomeCatView3=0x7f080020;
+        public static final int incomeCatView4=0x7f080023;
+        public static final int incomeCatView5=0x7f080026;
+        public static final int incomeErrorTextView=0x7f080019;
+        public static final int incomeHeadingTextView=0x7f080018;
+        public static final int incomeMainLayout=0x7f080017;
         public static final int reportsButton=0x7f080003;
-        public static final int textView1=0x7f080004;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int expense=0x7f030001;
-        public static final int income=0x7f030002;
-        public static final int report=0x7f030003;
+        public static final int add_expense=0x7f030001;
+        public static final int add_income=0x7f030002;
+        public static final int expense=0x7f030003;
+        public static final int income=0x7f030004;
+        public static final int report=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f070000;
     }
     public static final class string {
-        public static final int action_settings=0x7f050002;
+        public static final int action_settings=0x7f050001;
+        public static final int addExpense_btn_text=0x7f050008;
+        public static final int addIncome_btn_text=0x7f050006;
         public static final int app_name=0x7f050000;
-        public static final int expenseText=0x7f050004;
-        public static final int hello_world=0x7f050001;
-        public static final int incomeText=0x7f050003;
-        public static final int reportText=0x7f050005;
+        public static final int expenseHeading=0x7f050007;
+        public static final int expenseText=0x7f050003;
+        public static final int incomeHeading=0x7f050005;
+        public static final int incomeText=0x7f050002;
+        public static final int reportText=0x7f050004;
     }
     public static final class style {
         /** 
