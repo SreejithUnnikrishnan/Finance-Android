@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Finance</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="incomeText">Income</string>
+    <string name="expenseText">Expense</string>
+    <string name="reportText">Report</string>
+
+</resources>
