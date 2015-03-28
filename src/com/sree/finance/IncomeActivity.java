@@ -31,79 +31,90 @@ public class IncomeActivity extends Activity {
 	private TextView incomeCatView5;
 	private TextView incomeAmtView5;
 	private TextView incomeBudView5;
-	private DatabaseConnector connect = new DatabaseConnector(this);
-	
-	
+	private DatabaseConnector connect;
+
 	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.income);
-        
-        incomeErrorTextView = (TextView) findViewById(R.id.incomeErrorTextView);
-        incomeCatView1 = (TextView) findViewById(R.id.incomeCatView1);
-        incomeCatView2 = (TextView) findViewById(R.id.incomeCatView2);
-        incomeCatView3 = (TextView) findViewById(R.id.incomeCatView3);
-        incomeCatView4 = (TextView) findViewById(R.id.incomeCatView4);
-        incomeCatView5 = (TextView) findViewById(R.id.incomeCatView5);
-        
-        incomeAmtView1 = (TextView) findViewById(R.id.incomeAmtView1);
-        incomeAmtView2 = (TextView) findViewById(R.id.incomeAmtView2);
-        incomeAmtView3 = (TextView) findViewById(R.id.incomeAmtView3);
-        incomeAmtView4 = (TextView) findViewById(R.id.incomeAmtView4);
-        incomeAmtView5 = (TextView) findViewById(R.id.incomeAmtView5);
-        
-        incomeBudView1 = (TextView) findViewById(R.id.incomeBudView1);
-        incomeBudView2 = (TextView) findViewById(R.id.incomeBudView2);
-        incomeBudView3 = (TextView) findViewById(R.id.incomeBudView3);
-        incomeBudView4 = (TextView) findViewById(R.id.incomeBudView4);
-        incomeBudView5 = (TextView) findViewById(R.id.incomeBudView5);
-        
-        addIncomeDetailButton = (Button) findViewById(R.id.addIncomeDetailButton);
-        
-        addIncomeDetailButton.setOnClickListener(addIncomeDetailButtonListener);
-        
-        Cursor income = connect.getIncome();
-        if(income.moveToFirst()){
-        	int count = 1;
-        	do{
-        		if(count == 1){
-	        		incomeCatView1.setText(income.getString(1));
-	        		incomeAmtView1.setText(income.getInt(2));
-	        		incomeBudView1.setText(income.getInt(4));
-	        		count++;
-        		}
-        		else if(count == 2){
-	        		incomeCatView2.setText(income.getString(1));
-	        		incomeAmtView2.setText(income.getInt(2));
-	        		incomeBudView2.setText(income.getInt(4));
-	        		count++;
-        		}
-        		else if(count == 3){
-	        		incomeCatView3.setText(income.getString(1));
-	        		incomeAmtView3.setText(income.getInt(2));
-	        		incomeBudView3.setText(income.getInt(4));
-	        		count++;
-        		}
-        		else if(count == 4){
-	        		incomeCatView4.setText(income.getString(1));
-	        		incomeAmtView4.setText(income.getInt(2));
-	        		incomeBudView4.setText(income.getInt(4));
-	        		count++;
-        		}
-        		else if(count == 5){
-	        		incomeCatView5.setText(income.getString(1));
-	        		incomeAmtView5.setText(income.getInt(2));
-	        		incomeBudView5.setText(income.getInt(4));
-	        		count++;
-        		}
-        		
-			}while(income.moveToNext());
-        }
-        else{
-        	incomeErrorTextView.setText("Add Income Details");
-        }
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.income);
+
+		incomeErrorTextView = (TextView) findViewById(R.id.incomeErrorTextView);
+		incomeCatView1 = (TextView) findViewById(R.id.incomeCatView1);
+		incomeCatView2 = (TextView) findViewById(R.id.incomeCatView2);
+		incomeCatView3 = (TextView) findViewById(R.id.incomeCatView3);
+		incomeCatView4 = (TextView) findViewById(R.id.incomeCatView4);
+		incomeCatView5 = (TextView) findViewById(R.id.incomeCatView5);
+
+		incomeAmtView1 = (TextView) findViewById(R.id.incomeAmtView1);
+		incomeAmtView2 = (TextView) findViewById(R.id.incomeAmtView2);
+		incomeAmtView3 = (TextView) findViewById(R.id.incomeAmtView3);
+		incomeAmtView4 = (TextView) findViewById(R.id.incomeAmtView4);
+		incomeAmtView5 = (TextView) findViewById(R.id.incomeAmtView5);
+
+		incomeBudView1 = (TextView) findViewById(R.id.incomeBudView1);
+		incomeBudView2 = (TextView) findViewById(R.id.incomeBudView2);
+		incomeBudView3 = (TextView) findViewById(R.id.incomeBudView3);
+		incomeBudView4 = (TextView) findViewById(R.id.incomeBudView4);
+		incomeBudView5 = (TextView) findViewById(R.id.incomeBudView5);
+
+		addIncomeDetailButton = (Button) findViewById(R.id.addIncomeDetailButton);
+
+		addIncomeDetailButton.setOnClickListener(addIncomeDetailButtonListener);
+
+		connect = new DatabaseConnector(this);
+
+		Cursor income = connect.getIncome();
+		String category[] = new String[income.getCount()];
+		String amount[] = new String[income.getCount()];
+		String budget[] = new String[income.getCount()];
+		int i = 0;
+
+		income.moveToFirst();
+		while (income.isAfterLast() == false) {
+			category[i] = income.getString(1);
+			amount[i] = income.getString(2);
+			budget[i] = income.getString(4);
+			i++;
+			income.moveToNext();
+		}
+		if (category.length == 0) {
+			incomeErrorTextView.setText("Add Income Details to start!!!");
+
+		} else {
+			for (int j = 0; j < category.length; j++) {
+				System.out.println("Cat element: " + category[j]);
+				System.out.println("amt element: " + amount[j]);
+				System.out.println("budget element: " + budget[j]);
+				if (j == 0) {
+					incomeCatView1.setText(category[j]);
+					incomeAmtView1.setText(amount[j]);
+					incomeBudView1.setText(budget[j]);
+
+				} else if (j == 1) {
+					incomeCatView2.setText(category[j]);
+					incomeAmtView2.setText(amount[j]);
+					incomeBudView2.setText(budget[j]);
+
+				} else if (j == 2) {
+					incomeCatView3.setText(category[j]);
+					incomeAmtView3.setText(amount[j]);
+					incomeBudView3.setText(budget[j]);
+
+				} else if (j == 3) {
+					incomeCatView4.setText(category[j]);
+					incomeAmtView4.setText(amount[j]);
+					incomeBudView4.setText(budget[j]);
+
+				} else if (j == 4) {
+					incomeCatView5.setText(category[j]);
+					incomeAmtView5.setText(amount[j]);
+					incomeBudView5.setText(budget[j]);
+
+				}
+			}
+		}
 	}
-	
+
 	private OnClickListener addIncomeDetailButtonListener = new OnClickListener() {
 
 		@Override

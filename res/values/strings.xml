@@ -10,5 +10,13 @@
     <string name="addIncome_btn_text">Add</string>
     <string name="expenseHeading">Expense</string>
     <string name="addExpense_btn_text">Add</string>
+    <string name="addIncomeView">Add Income</string>
+    <string name="category_name">Category</string>
+    <string name="category_amount">Amount</string>
+    <string name="category_date">Date</string>
+    <string name="category_budget">Budget Amount</string>
+     <string name="addExpenseView">Add Expense</string>
+     
+    
 
 </resources>

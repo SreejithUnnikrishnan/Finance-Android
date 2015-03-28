@@ -27,7 +27,7 @@ public class ExpenseActivity extends Activity {
 	private TextView expenseCatView5;
 	private TextView expenseAmtView5;
 	private TextView expenseBudView5;
-	private DatabaseConnector connect = new DatabaseConnector(this);
+	private DatabaseConnector connect;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,46 +57,59 @@ public class ExpenseActivity extends Activity {
         
         addExpenseDetailButton.setOnClickListener(addExpenseDetailButtonListener);
         
-        Cursor expense = connect.getExpense();
-        if(expense.moveToFirst()){
-        	int count = 1;
-        	do{
-        		if(count == 1){
-	        		expenseCatView1.setText(expense.getString(1));
-	        		expenseAmtView1.setText(expense.getInt(2));
-	        		expenseBudView1.setText(expense.getInt(4));
-	        		count++;
-        		}
-        		else if(count == 2){
-	        		expenseCatView2.setText(expense.getString(1));
-	        		expenseAmtView2.setText(expense.getInt(2));
-	        		expenseBudView2.setText(expense.getInt(4));
-	        		count++;
-        		}
-        		else if(count == 3){
-	        		expenseCatView3.setText(expense.getString(1));
-	        		expenseAmtView3.setText(expense.getInt(2));
-	        		expenseBudView3.setText(expense.getInt(4));
-	        		count++;
-        		}
-        		else if(count == 4){
-	        		expenseCatView4.setText(expense.getString(1));
-	        		expenseAmtView4.setText(expense.getInt(2));
-	        		expenseBudView4.setText(expense.getInt(4));
-	        		count++;
-        		}
-        		else if(count == 5){
-	        		expenseCatView5.setText(expense.getString(1));
-	        		expenseAmtView5.setText(expense.getInt(2));
-	        		expenseBudView5.setText(expense.getInt(4));
-	        		count++;
-        		}
-        		
-			}while(expense.moveToNext());
-        }
-        else{
-        	expenseErrorTextView.setText("Add expense Details");
-        }
+        
+        connect = new DatabaseConnector(this);
+
+        Cursor expense = connect.getExpense();;
+		String category[] = new String[expense.getCount()];
+		String amount[] = new String[expense.getCount()];
+		String budget[] = new String[expense.getCount()];
+		int i = 0;
+
+		expense.moveToFirst();
+		while (expense.isAfterLast() == false) {
+			category[i] = expense.getString(1);
+			amount[i] = expense.getString(2);
+			budget[i] = expense.getString(4);
+			i++;
+			expense.moveToNext();
+		}
+		if (category.length == 0) {
+			expenseErrorTextView.setText("Add Expense Details to start!!!");
+
+		} else {
+			for (int j = 0; j < category.length; j++) {
+				System.out.println("Cat element: " + category[j]);
+				System.out.println("amt element: " + amount[j]);
+				System.out.println("budget element: " + budget[j]);
+				if (j == 0) {
+					expenseCatView1.setText(category[j]);
+					expenseAmtView1.setText(amount[j]);
+					expenseBudView1.setText(budget[j]);
+
+				} else if (j == 1) {
+					expenseCatView2.setText(category[j]);
+					expenseAmtView2.setText(amount[j]);
+					expenseBudView2.setText(budget[j]);
+
+				} else if (j == 2) {
+					expenseCatView3.setText(category[j]);
+					expenseAmtView3.setText(amount[j]);
+					expenseBudView3.setText(budget[j]);
+
+				} else if (j == 3) {
+					expenseCatView4.setText(category[j]);
+					expenseAmtView4.setText(amount[j]);
+					expenseBudView4.setText(budget[j]);
+
+				} else if (j == 4) {
+					expenseCatView5.setText(category[j]);
+					expenseAmtView5.setText(amount[j]);
+					expenseBudView5.setText(budget[j]);
+
+				}
+			}
+		}
 	}
 	
 	private OnClickListener addExpenseDetailButtonListener = new OnClickListener() {

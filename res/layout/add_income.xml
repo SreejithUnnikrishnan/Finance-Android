@@ -1,8 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/addIncomeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:columnCount="4"
+    android:orientation="vertical"
+    android:rowCount="15" >
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/addIncomeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_gravity="top"
+        android:layout_row="0"
+        android:gravity="center"
+        android:text="@string/addIncomeView"
+        android:textColor="@android:color/holo_green_dark" />
+
+    <TextView
+        android:id="@+id/addIncomeErrorTextView"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="top"
+        android:gravity="center"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <TextView
+        android:id="@+id/incomeCategoryNameTextView"
+        android:layout_gravity="left"
+        android:text="@string/category_name" />
+
+    <Spinner
+        android:id="@+id/incomeCategorySpinner"
+        android:layout_height="42dp"
+        android:layout_gravity="center_vertical" />
+
+    <TextView
+        android:id="@+id/incomeAmountTextView"
+        android:layout_gravity="left"
+        android:text="@string/category_amount" />
+
+    <EditText
+        android:id="@+id/addIncomeAmountEditText"
+        android:layout_gravity="fill_horizontal"
+        android:ems="10"
+        android:inputType="numberDecimal" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/incomeDateTextView"
+        android:layout_gravity="left"
+        android:text="@string/category_date" />
+
+    <EditText
+        android:id="@+id/addIncomeDateEditText"
+        android:layout_gravity="fill_horizontal"
+        android:ems="10"
+        android:hint="dd-mm-yyyy"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/addIncomeBudgetTextView"
+        android:layout_gravity="left"
+        android:text="@string/category_budget" />
+
+    <EditText
+        android:id="@+id/addIncomeBudgetEditText"
+        android:layout_gravity="fill_horizontal"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/addIncomeDetailsAddButton"
+        android:layout_width="90dp"
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_row="10"
+        android:text="@string/addIncome_btn_text" />
+
+</GridLayout>
