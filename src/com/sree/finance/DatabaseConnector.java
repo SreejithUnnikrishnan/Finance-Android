@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -143,8 +145,18 @@ public class DatabaseConnector extends SQLiteOpenHelper {
 	}
 
 	public Cursor getIncome() {
-		String query = "SELECT * from income";
+		Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        String from = year+"-0"+(month+1)+"-01";
+        String to = year+"-0"+(month+1)+"-31";
+        System.out.println("from: " +from+ " to: "+to);
+		String query = "SELECT * from income where date > '"+from+"' and date < '"+to+"'";
+       // String query = "SELECT * from income";
 		System.out.println("Inside get income start");
+		System.out.println("Query: "+query);
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor result = db.rawQuery(query, null);
 		System.out.println("Inside get income after cursor");
@@ -152,7 +164,15 @@ public class DatabaseConnector extends SQLiteOpenHelper {
 	}
 
 	public Cursor getExpense() {
-		String query = "SELECT * from expense";
+		Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        String from = year+"-0"+(month+1)+"-01";
+        String to = year+"-0"+(month+1)+"-31";
+        System.out.println("from: " +from+ " to: "+to);
+		String query = "SELECT * from expense where date > '"+from+"' and date < '"+to+"'";
 		System.out.println("Inside get expense start");
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor result = db.rawQuery(query, null);
@@ -210,6 +230,41 @@ public class DatabaseConnector extends SQLiteOpenHelper {
 		} else {
 			String id = result.getString(0);
 			return id;
+		}
+
+	}
+
+	public boolean insertExpense(String cat, double amt, double bud, String date) {
+		SQLiteDatabase database = this.getWritableDatabase();
+		long id = -1;
+		int count = 0;
+		String check = checkCategory(cat, "expense");
+		if (check == "true") {
+			ContentValues newIncome = new ContentValues();
+			newIncome.put("name", cat);
+			newIncome.put("amount", amt);
+			newIncome.put("date", date);
+			newIncome.put("budget", bud);
+			id = database.insert("expense", null, newIncome);
+			close();
+			if (id == -1) {
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			ContentValues newIncome = new ContentValues();
+			newIncome.put("name", cat);
+			newIncome.put("amount", amt);
+			newIncome.put("date", date);
+			newIncome.put("budget", bud);
+			count = database.update("expense", newIncome, "_id=" + Integer.parseInt(check), null);
+			close();
+			if (count == 0) {
+				return false;
+			} else {
+				return true;
+			}
 		}
 
 	}

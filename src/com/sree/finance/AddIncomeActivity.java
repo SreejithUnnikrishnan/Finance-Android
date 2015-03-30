@@ -33,8 +33,12 @@ public class AddIncomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_income);
 		connect = new DatabaseConnector(this);
+		addIncomeDateEditText = (EditText) findViewById(R.id.addIncomeDateEditText);
 		addIncomeDetailsAddButton = (Button) findViewById(R.id.addIncomeDetailsAddButton);
 		incomeCategorySpinner = (Spinner) findViewById(R.id.incomeCategorySpinner);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+		addIncomeDateEditText.setText(sdf.format(date));
 		Cursor cursor = connect.getIncomeCategory();
 
 		String category[] = new String[cursor.getCount()];
@@ -83,21 +87,21 @@ public class AddIncomeActivity extends Activity {
 			System.out.println("Cat: " + cat + " amt: " + amt + " bud: " + bud
 					+ " date: " + date);
 			
-			Date dt = new Date();
-			
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
-			System.out.println("after.....");
-			try {
-				Date sys = sdf.parse(dt.toString());
-				Date userDate = sdf.parse(date);
-				System.out.println("system: " + sys + " user date: " + userDate);
-				if(sys.after(userDate)){
-					alertMessage("Enter date less than or equal to todays date");
-				}
-			} catch (ParseException e) {
-				System.out.println("Inside exception");
-				e.printStackTrace();
-			}
+//			Date dt = new Date();
+//			
+//			SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
+//			System.out.println("after.....");
+//			try {
+//				Date sys = sdf.parse(dt.toString());
+//				Date userDate = sdf.parse(date);
+//				System.out.println("system: " + sys + " user date: " + userDate);
+//				if(sys.after(userDate)){
+//					alertMessage("Enter date less than or equal to todays date");
+//				}
+//			} catch (ParseException e) {
+//				System.out.println("Inside exception");
+//				e.printStackTrace();
+//			}
 			
 			connect = new DatabaseConnector(AddIncomeActivity.this);
 			boolean rs = connect.insertIncome(cat, amt, bud, date);

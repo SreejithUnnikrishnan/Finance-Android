@@ -1,6 +1,11 @@
 package com.sree.finance;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -27,6 +32,10 @@ public class AddExpenseActivity  extends Activity {
         
         addExpenseDetailsAddButton = (Button) findViewById(R.id.addExpenseDetailsAddButton);
         expenseCategorySpinner = (Spinner) findViewById(R.id.expenseCategorySpinner);
+        expenseCategorySpinner = (Spinner) findViewById(R.id.expenseCategorySpinner);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+		addExpenseDateEditText.setText(sdf.format(date));
         Cursor cursor = connect.getExpenseCategory();
         String category[] = new String[cursor.getCount()];
 		int i = 0;
@@ -59,11 +68,47 @@ public class AddExpenseActivity  extends Activity {
 	        addExpenseDateEditText = (EditText) findViewById(R.id.addExpenseDateEditText);
 	        addExpenseBudgetEditText = (EditText) findViewById(R.id.addExpenseBudgetEditText);
 	        expenseCategorySpinner = (Spinner) findViewById(R.id.expenseCategorySpinner);
-			startActivity(new Intent("com.sree.finance.ExpenseActivity"));
+			System.out.println("Before.....");
+			String cat = expenseCategorySpinner.getSelectedItem().toString();
+			double amt = Double.parseDouble(addExpenseAmountEditText.getText()
+					.toString());
+			System.out.println("mid.....");
+			double bud = Double.parseDouble(addExpenseBudgetEditText.getText()
+					.toString());
+			String date = addExpenseDateEditText.getText().toString();
+			System.out.println("Cat: " + cat + " amt: " + amt + " bud: " + bud
+					+ " date: " + date);
+		
+			
+			connect = new DatabaseConnector(AddExpenseActivity.this);
+			boolean rs = connect.insertExpense(cat, amt, bud, date);
+			if (rs) {
+				startActivity(new Intent("com.sree.finance.ExpenseActivity"));
+			} else {
+				alertMessage("Oops!! Try Again");
+			}
 
 		}
 
 	};
+	
+	public void alertMessage(String msg){
+		AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
+				AddExpenseActivity.this);
+		alertBuilder.setMessage(msg);
+		alertBuilder.setNeutralButton("Ok",
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog,
+							int which) {
+						dialog.dismiss();
+					}
+				});
+		AlertDialog alert = alertBuilder.create();
+		alert.show();
+		
+	}
 	
 
 }
