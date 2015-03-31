@@ -288,5 +288,53 @@ public class DatabaseConnector extends SQLiteOpenHelper {
 		return amount;
 		
 	}
+	
+	public double getTotalAmount(String tab){
+		double total = 0.00;
+		Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        String from = year+"-0"+(month+1)+"-01";
+        String to = year+"-0"+(month+1)+"-31";
+        System.out.println("from: " +from+ " to: "+to);
+		String query = "select SUM(amount) as \"total\" from "+tab+ " where date >= '"+from+"' and date <= '"+to+"'";
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor result = db.rawQuery(query, null);		
+		System.out.println("Inside get total after cursor");
+		result.moveToFirst();
+		while (result.isAfterLast() == false) {
+			total = result.getDouble(0);
+			result.moveToNext();
+		}
+		System.out.println("Total income: " + total);
+		
+		return total;
+		
+	}
+	
+	public String getHighCategory(String tab){
+		String category = "";
+		Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        String from = year+"-0"+(month+1)+"-01";
+        String to = year+"-0"+(month+1)+"-31";
+        System.out.println("from: " +from+ " to: "+to);
+		String query = "select name from "+tab+ " where date >= '"+from+"' and date <= '"+to+"' and amount > (select amount from "+tab+ " where date >= '"+from+"' and date <= '"+to+"')";
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor result = db.rawQuery(query, null);		
+		System.out.println("Inside get total after cursor");
+		result.moveToFirst();
+		while (result.isAfterLast() == false) {
+			category = result.getString(0);
+			result.moveToNext();
+		}
+		System.out.println("high : " + category);
+		return category;
+	}
 
 }

@@ -25,6 +25,14 @@
      <string name="incomeReportButton">Report</string>
      <string name="expenseIncomeButton">Income</string>
      <string name="expenseReportButton">Report</string>
+     <string name="reportHeadingText">Monthly Report</string>
+     <string name="highIncomeTextView">Highest Income Category</string>
+     <string name="highExpenseTextView">Highest Expense Category</string>
+     <string name="reportTotIncomeLable">Total Income</string>
+     <string name="reportTotExpenseLable">Total Expense</string>
+     <string name="reportToIncomeText">Income</string>
+     <string name="reportToExpenseText">Expense</string>
+     
      
     
 

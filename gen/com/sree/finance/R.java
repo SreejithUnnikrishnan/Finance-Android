@@ -26,7 +26,7 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f080000;
-        public static final int action_settings=0x7f08004e;
+        public static final int action_settings=0x7f08005b;
         public static final int addExpenseAmountEditText=0x7f08000a;
         public static final int addExpenseBudgetEditText=0x7f08000e;
         public static final int addExpenseBudgetTextView=0x7f08000d;
@@ -74,6 +74,8 @@ public final class R {
         public static final int expenseMainLayout=0x7f08001e;
         public static final int expenseToIncome=0x7f080034;
         public static final int expenseToReport=0x7f080033;
+        public static final int expenseTotLabel=0x7f080053;
+        public static final int expenseTotalAmountTextView=0x7f080054;
         public static final int incomeAmountTextView=0x7f080016;
         public static final int incomeAmtView1=0x7f08003d;
         public static final int incomeAmtView2=0x7f080040;
@@ -103,6 +105,17 @@ public final class R {
         public static final int incomeMainLayout=0x7f080036;
         public static final int incomeToExpense=0x7f08004c;
         public static final int incomeToReport=0x7f08004b;
+        public static final int incomeTotLabel=0x7f080051;
+        public static final int incomeTotalAmountTextView=0x7f080052;
+        public static final int reportErrorTextView=0x7f080050;
+        public static final int reportHeadingTextView=0x7f08004f;
+        public static final int reportHighExpense=0x7f080057;
+        public static final int reportHighIncome=0x7f080055;
+        public static final int reportHighestIncomeCategory=0x7f080056;
+        public static final int reportToExpense=0x7f080058;
+        public static final int reportToIncome=0x7f08004e;
+        public static final int reportToIncomes=0x7f080059;
+        public static final int reporthighestExpenseCategory=0x7f08005a;
         public static final int reportsButton=0x7f080003;
     }
     public static final class layout {
@@ -136,11 +149,18 @@ public final class R {
         public static final int expenseIncomeButton=0x7f050016;
         public static final int expenseReportButton=0x7f050017;
         public static final int expenseText=0x7f050003;
+        public static final int highExpenseTextView=0x7f05001a;
+        public static final int highIncomeTextView=0x7f050019;
         public static final int incomeExpenseButton=0x7f050014;
         public static final int incomeHeading=0x7f050005;
         public static final int incomeReportButton=0x7f050015;
         public static final int incomeText=0x7f050002;
+        public static final int reportHeadingText=0x7f050018;
         public static final int reportText=0x7f050004;
+        public static final int reportToExpenseText=0x7f05001e;
+        public static final int reportToIncomeText=0x7f05001d;
+        public static final int reportTotExpenseLable=0x7f05001c;
+        public static final int reportTotIncomeLable=0x7f05001b;
     }
     public static final class style {
         /** 

@@ -1,14 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/reportToIncome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:columnCount="2"
+    android:orientation="vertical"
+    android:rowCount="14" >
 
     <TextView
-        android:id="@+id/incomeHeadingTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Report"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:id="@+id/reportHeadingTextView"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:text="@string/reportHeadingText"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/holo_green_dark" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/reportErrorTextView"
+        android:layout_width="match_parent"
+        android:layout_gravity="left"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <TextView
+        android:id="@+id/incomeTotLabel"
+        android:layout_width="168dp"
+        android:layout_column="0"
+        android:layout_gravity="left|top"
+        android:layout_row="3"
+        android:text="@string/reportTotIncomeLable" />
+
+    <TextView
+        android:id="@+id/incomeTotalAmountTextView"
+        android:layout_width="158dp"
+        android:layout_column="0"
+        android:layout_gravity="right|top"
+        android:layout_row="3" />
+
+    <TextView
+        android:id="@+id/expenseTotLabel"
+        android:layout_width="168dp"
+        android:layout_gravity="left"
+        android:text="@string/reportTotExpenseLable" />
+
+    <TextView
+        android:id="@+id/expenseTotalAmountTextView"
+        android:layout_width="158dp"
+        android:layout_column="0"
+        android:layout_gravity="right|top"
+        android:layout_row="4" />
+
+    <TextView
+        android:id="@+id/reportHighIncome"
+        android:layout_width="168dp"
+        android:layout_gravity="left"
+        android:text="@string/highIncomeTextView" />
+
+    <TextView
+        android:id="@+id/reportHighestIncomeCategory"
+        android:layout_width="158dp"
+        android:layout_column="0"
+        android:layout_gravity="right|top"
+        android:layout_row="5" />
+
+    <TextView
+        android:id="@+id/reportHighExpense"
+        android:layout_width="168dp"
+        android:layout_gravity="left"
+        android:text="@string/highExpenseTextView" />
+
+    <Button
+        android:id="@+id/reportToExpense"
+        android:layout_width="113dp"
+        android:layout_column="0"
+        android:layout_gravity="right|center_vertical"
+        android:layout_row="13"
+        android:text="@string/reportToExpenseText" />
+
+    <Button
+        android:id="@+id/reportToIncomes"
+        android:layout_width="116dp"
+        android:layout_column="0"
+        android:layout_gravity="left|center_vertical"
+        android:layout_row="13"
+        android:text="@string/reportToIncomeText" />
+
+    <TextView
+        android:id="@+id/reporthighestExpenseCategory"
+        android:layout_width="158dp"
+        android:layout_column="0"
+        android:layout_gravity="right|top"
+        android:layout_row="6" />
+
+</GridLayout>
