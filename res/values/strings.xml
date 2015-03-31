@@ -16,6 +16,15 @@
     <string name="category_date">Date</string>
     <string name="category_budget">Budget Amount</string>
      <string name="addExpenseView">Add Expense</string>
+     <string name="categoryTextName">Category</string>
+     <string name="amountTextName">Amount</string>
+     <string name="budgetTextName">Budget</string>
+     <string name="backButton">Back</string>
+     <string name="categoryCancelButton">Cancel</string>
+     <string name="incomeExpenseButton">Expense</string>
+     <string name="incomeReportButton">Report</string>
+     <string name="expenseIncomeButton">Income</string>
+     <string name="expenseReportButton">Report</string>
      
     
 

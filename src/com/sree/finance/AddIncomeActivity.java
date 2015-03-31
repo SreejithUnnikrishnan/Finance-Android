@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 public class AddIncomeActivity extends Activity {
 	private Button addIncomeDetailsAddButton;
+	private Button incomeCancelButton;
 	private EditText addIncomeAmountEditText;
 	private EditText addIncomeDateEditText;
 	private EditText addIncomeBudgetEditText;
@@ -35,6 +36,7 @@ public class AddIncomeActivity extends Activity {
 		connect = new DatabaseConnector(this);
 		addIncomeDateEditText = (EditText) findViewById(R.id.addIncomeDateEditText);
 		addIncomeDetailsAddButton = (Button) findViewById(R.id.addIncomeDetailsAddButton);
+		incomeCancelButton = (Button) findViewById(R.id.incomeCancelButton);
 		incomeCategorySpinner = (Spinner) findViewById(R.id.incomeCategorySpinner);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
@@ -66,6 +68,9 @@ public class AddIncomeActivity extends Activity {
 
 		addIncomeDetailsAddButton
 				.setOnClickListener(addIncomeDetailsAddButtonListener);
+		
+		incomeCancelButton
+			.setOnClickListener(incomeCancelButtonListener);
 	}
 
 	private OnClickListener addIncomeDetailsAddButtonListener = new OnClickListener() {
@@ -110,6 +115,16 @@ public class AddIncomeActivity extends Activity {
 			} else {
 				alertMessage("Oops!! Try Again");
 			}
+
+		}
+
+	};
+	
+	private OnClickListener incomeCancelButtonListener = new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			startActivity(new Intent("com.sree.finance.IncomeActivity"));
 
 		}
 

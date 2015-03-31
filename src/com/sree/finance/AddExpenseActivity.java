@@ -18,6 +18,7 @@ import android.widget.Spinner;
 
 public class AddExpenseActivity  extends Activity {
 	private Button addExpenseDetailsAddButton;
+	private Button expenseCancelButton;
 	private EditText addExpenseAmountEditText;
 	private EditText addExpenseDateEditText;
 	private EditText addExpenseBudgetEditText;
@@ -30,8 +31,10 @@ public class AddExpenseActivity  extends Activity {
         setContentView(R.layout.add_expense);
         connect = new DatabaseConnector(this);
         
-        addExpenseDetailsAddButton = (Button) findViewById(R.id.addExpenseDetailsAddButton);
-        expenseCategorySpinner = (Spinner) findViewById(R.id.expenseCategorySpinner);
+        addExpenseDateEditText = (EditText) findViewById(R.id.addExpenseDateEditText);
+		addExpenseDetailsAddButton = (Button) findViewById(R.id.addExpenseDetailsAddButton);
+		expenseCancelButton = (Button) findViewById(R.id.expenseCancelButton);
+        //expenseCategorySpinner = (Spinner) findViewById(R.id.expenseCategorySpinner);
         expenseCategorySpinner = (Spinner) findViewById(R.id.expenseCategorySpinner);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
@@ -58,6 +61,7 @@ public class AddExpenseActivity  extends Activity {
 		}
 
         addExpenseDetailsAddButton.setOnClickListener(addExpenseDetailsAddButtonListener);
+        expenseCancelButton.setOnClickListener(expenseCancelButtonListener);
 	}
 	
 	private OnClickListener addExpenseDetailsAddButtonListener = new OnClickListener() {
@@ -87,6 +91,16 @@ public class AddExpenseActivity  extends Activity {
 			} else {
 				alertMessage("Oops!! Try Again");
 			}
+
+		}
+
+	};
+	
+	private OnClickListener expenseCancelButtonListener = new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			startActivity(new Intent("com.sree.finance.ExpenseActivity"));
 
 		}
 

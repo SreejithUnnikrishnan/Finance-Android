@@ -25,6 +25,33 @@
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@android:color/holo_red_dark" />
+    
+     <TextView
+         android:id="@+id/expenseCatNameView"
+         android:layout_width="110dp"
+         android:layout_height="44dp"
+         android:layout_gravity="left"
+         android:text="@string/categoryTextName"
+         android:textAppearance="?android:attr/textAppearanceLarge"
+         android:textColor="@android:color/holo_blue_dark" />
+    
+    <TextView
+        android:id="@+id/expenseCatAmountView"
+        android:layout_width="110dp"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="@string/amountTextName"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/holo_blue_dark" />
+    
+    <TextView
+        android:id="@+id/expenseCatBudgetView"
+        android:layout_width="110dp"
+        android:layout_height="44dp"
+        android:layout_gravity="left"
+        android:text="@string/budgetTextName"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/holo_blue_dark" />
 
     <TextView
         android:id="@+id/expenseCatView1"
@@ -130,13 +157,35 @@
         android:layout_height="44dp"
         android:layout_gravity="left"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+   <!--   <Button
+        android:id="@+id/expenseBackButton"
+        android:layout_width="105dp"
+        android:layout_column="2"
+        android:layout_gravity="left|center_vertical"
+        android:layout_row="7"
+        android:text="@string/backButton" /> -->
+        
+         <Button
+        android:id="@+id/expenseToReport"
+        android:layout_column="2"
+        android:layout_gravity="left|center_vertical"
+        android:layout_row="8"
+        android:text="@string/expenseReportButton" />
+
+    <Button
+        android:id="@+id/expenseToIncome"
+        android:layout_column="0"
+        android:layout_gravity="center"
+        android:layout_row="8"
+        android:text="@string/expenseIncomeButton" />
 
     <Button
         android:id="@+id/addexpenseDetailButton"
-        android:layout_width="77dp"
+        android:layout_width="86dp"
         android:layout_column="1"
-        android:layout_gravity="center"
-        android:layout_row="6"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_row="8"
         android:text="@string/addExpense_btn_text" />
 
 </GridLayout>

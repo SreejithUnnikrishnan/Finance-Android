@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 public class ExpenseActivity extends Activity {
 	private Button addExpenseDetailButton;
+	private Button expenseToIncome;
+	private Button expenseToReport;
 	private TextView expenseErrorTextView;
 	private TextView expenseCatView1;
 	private TextView expenseAmtView1;
@@ -54,8 +56,14 @@ public class ExpenseActivity extends Activity {
         expenseBudView5 = (TextView) findViewById(R.id.expenseBudView5);
         
         addExpenseDetailButton = (Button) findViewById(R.id.addexpenseDetailButton);
+        expenseToIncome = (Button) findViewById(R.id.expenseToIncome);
+		expenseToReport = (Button) findViewById(R.id.expenseToReport);
+       // expenseBackButton = (Button) findViewById(R.id.expenseBackButton);
         
         addExpenseDetailButton.setOnClickListener(addExpenseDetailButtonListener);
+        expenseToIncome.setOnClickListener(expenseToIncomeButtonListener);
+        expenseToReport.setOnClickListener(expenseToReportButtonListener);
+       // expenseBackButton.setOnClickListener(expenseBackButtonListener);
         
         
         connect = new DatabaseConnector(this);
@@ -121,5 +129,27 @@ public class ExpenseActivity extends Activity {
 		}
 
 	};
+	
+	private OnClickListener expenseToIncomeButtonListener = new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			startActivity(new Intent("com.sree.finance.IncomeActivity"));
+
+		}
+
+	};
+	
+	private OnClickListener expenseToReportButtonListener = new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			startActivity(new Intent("com.sree.finance.ReportActivity"));
+
+		}
+
+	};
+	
+
 
 }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:columnCount="4"
     android:orientation="vertical"
-    android:rowCount="15" >
+    android:rowCount="16" >
 
     <TextView
         android:id="@+id/addIncomeTextView"
@@ -78,12 +78,21 @@
         android:ems="10"
         android:inputType="numberDecimal" />
 
+    
     <Button
         android:id="@+id/addIncomeDetailsAddButton"
         android:layout_width="90dp"
         android:layout_column="0"
         android:layout_gravity="center_horizontal|top"
-        android:layout_row="10"
+        android:layout_row="11"
         android:text="@string/addIncome_btn_text" />
+
+    <Button
+        android:id="@+id/incomeCancelButton"
+        android:layout_width="90dp"
+        android:layout_column="0"
+        android:layout_gravity="right|top"
+        android:layout_row="11"
+        android:text="@string/categoryCancelButton" />
 
 </GridLayout>

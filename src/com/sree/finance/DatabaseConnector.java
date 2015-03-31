@@ -153,7 +153,7 @@ public class DatabaseConnector extends SQLiteOpenHelper {
         String from = year+"-0"+(month+1)+"-01";
         String to = year+"-0"+(month+1)+"-31";
         System.out.println("from: " +from+ " to: "+to);
-		String query = "SELECT * from income where date > '"+from+"' and date < '"+to+"'";
+		String query = "SELECT * from income where date >= '"+from+"' and date <= '"+to+"'";
        // String query = "SELECT * from income";
 		System.out.println("Inside get income start");
 		System.out.println("Query: "+query);
@@ -172,7 +172,7 @@ public class DatabaseConnector extends SQLiteOpenHelper {
         String from = year+"-0"+(month+1)+"-01";
         String to = year+"-0"+(month+1)+"-31";
         System.out.println("from: " +from+ " to: "+to);
-		String query = "SELECT * from expense where date > '"+from+"' and date < '"+to+"'";
+		String query = "SELECT * from expense where date >= '"+from+"' and date <= '"+to+"'";
 		System.out.println("Inside get expense start");
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor result = db.rawQuery(query, null);
@@ -203,6 +203,8 @@ public class DatabaseConnector extends SQLiteOpenHelper {
 			}
 		} else {
 			ContentValues newIncome = new ContentValues();
+			double toAdd = getCategoryAmount(check, "income");
+			amt = amt + toAdd;
 			newIncome.put("name", cat);
 			newIncome.put("amount", amt);
 			newIncome.put("date", date);
@@ -254,6 +256,8 @@ public class DatabaseConnector extends SQLiteOpenHelper {
 			}
 		} else {
 			ContentValues newIncome = new ContentValues();
+			double toAdd = getCategoryAmount(check, "expense");
+			amt = amt + toAdd;
 			newIncome.put("name", cat);
 			newIncome.put("amount", amt);
 			newIncome.put("date", date);
@@ -267,6 +271,22 @@ public class DatabaseConnector extends SQLiteOpenHelper {
 			}
 		}
 
+	}
+	
+	public double getCategoryAmount(String id, String tab){
+		double amount = 0.00;
+		String query = "SELECT * from " + tab + " where _id=" + id;
+		System.out.println("Inside getCategoryAmount start");
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor result = db.rawQuery(query, null);
+		System.out.println("Inside getCategoryAmount after cursor");
+		result.moveToFirst();
+		while (result.isAfterLast() == false) {
+			amount = result.getDouble(2);
+			result.moveToNext();
+		}
+		return amount;
+		
 	}
 
 }
