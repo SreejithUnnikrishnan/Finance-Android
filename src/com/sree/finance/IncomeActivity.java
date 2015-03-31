@@ -60,7 +60,7 @@ public class IncomeActivity extends Activity {
 		incomeBudView4 = (TextView) findViewById(R.id.incomeBudView4);
 		incomeBudView5 = (TextView) findViewById(R.id.incomeBudView5);
 
-		addIncomeDetailButton = (Button) findViewById(R.id.incomeToReport);
+		addIncomeDetailButton = (Button) findViewById(R.id.addIncomeDetailButton);
 		incomeToExpense = (Button) findViewById(R.id.incomeToExpense);
 		incomeToReport = (Button) findViewById(R.id.incomeToReport);
 
