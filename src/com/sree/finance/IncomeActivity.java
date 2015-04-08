@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class IncomeActivity extends Activity {
 	private Button addIncomeDetailButton;
-	//private Button incomeBackButton;
+	// private Button incomeBackButton;
 	private ImageButton quitIncomeButton;
 	private Button incomeToExpense;
 	private Button incomeToReport;
@@ -36,7 +36,7 @@ public class IncomeActivity extends Activity {
 	private TextView incomeCatView5;
 	private TextView incomeAmtView5;
 	private TextView incomeBudView5;
-	
+
 	private DatabaseConnector connect;
 
 	@Override
@@ -135,8 +135,7 @@ public class IncomeActivity extends Activity {
 		}
 
 	};
-	
-	
+
 	private OnClickListener incomeToExpenseButtonListener = new OnClickListener() {
 
 		@Override
@@ -146,7 +145,7 @@ public class IncomeActivity extends Activity {
 		}
 
 	};
-	
+
 	private OnClickListener incomeToReportButtonListener = new OnClickListener() {
 
 		@Override
@@ -156,16 +155,24 @@ public class IncomeActivity extends Activity {
 		}
 
 	};
-	
+
 	private OnClickListener quitIncomeButtonListener = new OnClickListener() {
 
 		@Override
 		public void onClick(View v) {
-			finish();
-			System.exit(0);
+			onDestroy();
+
+//			finish();
+//			System.exit(0);
 
 		}
 
 	};
+
+	@Override
+	public void onDestroy() {
+		android.os.Process.killProcess(android.os.Process.myPid());
+		super.onDestroy();
+	}
 
 }
