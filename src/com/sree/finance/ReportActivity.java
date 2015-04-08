@@ -31,7 +31,7 @@ public class ReportActivity extends Activity {
 		expenseTotalAmountTextView = (TextView) findViewById(R.id.expenseTotalAmountTextView);
 		reportHighestIncomeCategory = (TextView) findViewById(R.id.reportHighestIncomeCategory);
 		reporthighestExpenseCategory = (TextView) findViewById(R.id.reporthighestExpenseCategory);
-		quitReportButton = (ImageButton) findViewById(R.id.quitExpenseButton);
+		quitReportButton = (ImageButton) findViewById(R.id.quitReportButton);
 		quitReportButton.setOnClickListener(quitReportButtonListener);
 
 		reportToIncomes = (Button) findViewById(R.id.reportToIncomes);
@@ -44,6 +44,8 @@ public class ReportActivity extends Activity {
 		double expenseTotal = connect.getTotalAmount("expense");
 		String incomeCatgeory = connect.getHighCategory("income");
 		String expenseCatgeory = connect.getHighCategory("expense");
+		System.out.println("High Inc: " +incomeCatgeory);
+		System.out.println("High exp: " +expenseCatgeory);
 
 		if (incomeTotal == 0.00 && expenseTotal == 0.00) {
 			reportErrorTextView

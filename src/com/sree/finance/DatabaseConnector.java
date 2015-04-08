@@ -325,11 +325,14 @@ public class DatabaseConnector extends SQLiteOpenHelper {
         String to = year+"-0"+(month+1)+"-31";
         System.out.println("from: " +from+ " to: "+to);
 		String query = "select name from "+tab+ " where date >= '"+from+"' and date <= '"+to+"' and amount > (select amount from "+tab+ " where date >= '"+from+"' and date <= '"+to+"')";
+		System.out.println("Query : " + query);
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor result = db.rawQuery(query, null);		
 		System.out.println("Inside get total after cursor");
 		result.moveToFirst();
+		
 		while (result.isAfterLast() == false) {
+			
 			category = result.getString(0);
 			result.moveToNext();
 		}
