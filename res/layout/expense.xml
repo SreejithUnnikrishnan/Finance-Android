@@ -195,6 +195,6 @@
         android:layout_column="2"
         android:layout_gravity="center_horizontal|top"
         android:layout_row="0"
-        android:src="@android:drawable/ic_notification_clear_all" />
+        android:src="@android:drawable/ic_input_delete" />
 
 </GridLayout>
