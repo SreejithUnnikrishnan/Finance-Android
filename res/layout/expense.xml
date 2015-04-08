@@ -188,4 +188,13 @@
         android:layout_row="8"
         android:text="@string/addExpense_btn_text" />
 
+    <ImageButton
+        android:id="@+id/quitExpenseButton"
+        android:layout_width="31dp"
+        android:layout_height="27dp"
+        android:layout_column="2"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_row="0"
+        android:src="@android:drawable/ic_notification_clear_all" />
+
 </GridLayout>

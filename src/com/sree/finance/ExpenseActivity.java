@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class ExpenseActivity extends Activity {
 	private Button addExpenseDetailButton;
 	private Button expenseToIncome;
 	private Button expenseToReport;
+	private ImageButton quitExpenseButton;
 	private TextView expenseErrorTextView;
 	private TextView expenseCatView1;
 	private TextView expenseAmtView1;
@@ -30,45 +32,48 @@ public class ExpenseActivity extends Activity {
 	private TextView expenseAmtView5;
 	private TextView expenseBudView5;
 	private DatabaseConnector connect;
-	
-	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.expense);
-        
-        expenseErrorTextView = (TextView) findViewById(R.id.expenseErrorTextView);
-        expenseCatView1 = (TextView) findViewById(R.id.expenseCatView1);
-        expenseCatView2 = (TextView) findViewById(R.id.expenseCatView2);
-        expenseCatView3 = (TextView) findViewById(R.id.expenseCatView3);
-        expenseCatView4 = (TextView) findViewById(R.id.expenseCatView4);
-        expenseCatView5 = (TextView) findViewById(R.id.expenseCatView5);
-        
-        expenseAmtView1 = (TextView) findViewById(R.id.expenseAmtView1);
-        expenseAmtView2 = (TextView) findViewById(R.id.expenseAmtView2);
-        expenseAmtView3 = (TextView) findViewById(R.id.expenseAmtView3);
-        expenseAmtView4 = (TextView) findViewById(R.id.expenseAmtView4);
-        expenseAmtView5 = (TextView) findViewById(R.id.expenseAmtView5);
-        
-        expenseBudView1 = (TextView) findViewById(R.id.expenseBudView1);
-        expenseBudView2 = (TextView) findViewById(R.id.expenseBudView2);
-        expenseBudView3 = (TextView) findViewById(R.id.expenseBudView3);
-        expenseBudView4 = (TextView) findViewById(R.id.expenseBudView4);
-        expenseBudView5 = (TextView) findViewById(R.id.expenseBudView5);
-        
-        addExpenseDetailButton = (Button) findViewById(R.id.addexpenseDetailButton);
-        expenseToIncome = (Button) findViewById(R.id.expenseToIncome);
-		expenseToReport = (Button) findViewById(R.id.expenseToReport);
-       // expenseBackButton = (Button) findViewById(R.id.expenseBackButton);
-        
-        addExpenseDetailButton.setOnClickListener(addExpenseDetailButtonListener);
-        expenseToIncome.setOnClickListener(expenseToIncomeButtonListener);
-        expenseToReport.setOnClickListener(expenseToReportButtonListener);
-       // expenseBackButton.setOnClickListener(expenseBackButtonListener);
-        
-        
-        connect = new DatabaseConnector(this);
 
-        Cursor expense = connect.getExpense();;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.expense);
+
+		expenseErrorTextView = (TextView) findViewById(R.id.expenseErrorTextView);
+		expenseCatView1 = (TextView) findViewById(R.id.expenseCatView1);
+		expenseCatView2 = (TextView) findViewById(R.id.expenseCatView2);
+		expenseCatView3 = (TextView) findViewById(R.id.expenseCatView3);
+		expenseCatView4 = (TextView) findViewById(R.id.expenseCatView4);
+		expenseCatView5 = (TextView) findViewById(R.id.expenseCatView5);
+
+		expenseAmtView1 = (TextView) findViewById(R.id.expenseAmtView1);
+		expenseAmtView2 = (TextView) findViewById(R.id.expenseAmtView2);
+		expenseAmtView3 = (TextView) findViewById(R.id.expenseAmtView3);
+		expenseAmtView4 = (TextView) findViewById(R.id.expenseAmtView4);
+		expenseAmtView5 = (TextView) findViewById(R.id.expenseAmtView5);
+
+		expenseBudView1 = (TextView) findViewById(R.id.expenseBudView1);
+		expenseBudView2 = (TextView) findViewById(R.id.expenseBudView2);
+		expenseBudView3 = (TextView) findViewById(R.id.expenseBudView3);
+		expenseBudView4 = (TextView) findViewById(R.id.expenseBudView4);
+		expenseBudView5 = (TextView) findViewById(R.id.expenseBudView5);
+
+		addExpenseDetailButton = (Button) findViewById(R.id.addexpenseDetailButton);
+		expenseToIncome = (Button) findViewById(R.id.expenseToIncome);
+		expenseToReport = (Button) findViewById(R.id.expenseToReport);
+		// expenseBackButton = (Button) findViewById(R.id.expenseBackButton);
+		quitExpenseButton = (ImageButton) findViewById(R.id.quitExpenseButton);
+		quitExpenseButton.setOnClickListener(quitExpenseButtonListener);
+
+		addExpenseDetailButton
+				.setOnClickListener(addExpenseDetailButtonListener);
+		expenseToIncome.setOnClickListener(expenseToIncomeButtonListener);
+		expenseToReport.setOnClickListener(expenseToReportButtonListener);
+		// expenseBackButton.setOnClickListener(expenseBackButtonListener);
+
+		connect = new DatabaseConnector(this);
+
+		Cursor expense = connect.getExpense();
+		;
 		String category[] = new String[expense.getCount()];
 		String amount[] = new String[expense.getCount()];
 		String budget[] = new String[expense.getCount()];
@@ -119,7 +124,7 @@ public class ExpenseActivity extends Activity {
 			}
 		}
 	}
-	
+
 	private OnClickListener addExpenseDetailButtonListener = new OnClickListener() {
 
 		@Override
@@ -129,7 +134,7 @@ public class ExpenseActivity extends Activity {
 		}
 
 	};
-	
+
 	private OnClickListener expenseToIncomeButtonListener = new OnClickListener() {
 
 		@Override
@@ -139,7 +144,7 @@ public class ExpenseActivity extends Activity {
 		}
 
 	};
-	
+
 	private OnClickListener expenseToReportButtonListener = new OnClickListener() {
 
 		@Override
@@ -149,7 +154,15 @@ public class ExpenseActivity extends Activity {
 		}
 
 	};
-	
+	private OnClickListener quitExpenseButtonListener = new OnClickListener() {
 
+		@Override
+		public void onClick(View v) {
+			finish();
+			System.exit(0);
+
+		}
+
+	};
 
 }

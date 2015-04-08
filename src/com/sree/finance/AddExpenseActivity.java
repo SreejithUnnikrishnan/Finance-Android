@@ -14,11 +14,13 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 public class AddExpenseActivity  extends Activity {
 	private Button addExpenseDetailsAddButton;
 	private Button expenseCancelButton;
+	private ImageButton quitAddExpenseButton;
 	private EditText addExpenseAmountEditText;
 	private EditText addExpenseDateEditText;
 	private EditText addExpenseBudgetEditText;
@@ -34,6 +36,8 @@ public class AddExpenseActivity  extends Activity {
         addExpenseDateEditText = (EditText) findViewById(R.id.addExpenseDateEditText);
 		addExpenseDetailsAddButton = (Button) findViewById(R.id.addExpenseDetailsAddButton);
 		expenseCancelButton = (Button) findViewById(R.id.expenseCancelButton);
+		quitAddExpenseButton = (ImageButton) findViewById(R.id.quitAddExpenseButton);
+		quitAddExpenseButton.setOnClickListener(quitAddExpenseButtonListener);
         //expenseCategorySpinner = (Spinner) findViewById(R.id.expenseCategorySpinner);
         expenseCategorySpinner = (Spinner) findViewById(R.id.expenseCategorySpinner);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -101,6 +105,17 @@ public class AddExpenseActivity  extends Activity {
 		@Override
 		public void onClick(View v) {
 			startActivity(new Intent("com.sree.finance.ExpenseActivity"));
+
+		}
+
+	};
+	
+	private OnClickListener quitAddExpenseButtonListener = new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			finish();
+			System.exit(0);
 
 		}
 

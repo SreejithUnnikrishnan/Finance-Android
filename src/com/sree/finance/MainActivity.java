@@ -14,11 +14,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends Activity {
 	private Button incomeButton;
 	private Button expenseButton;
 	private Button reportsButton;
+	private ImageButton quitButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +29,12 @@ public class MainActivity extends Activity {
 		incomeButton = (Button) findViewById(R.id.incomeButton);
 		expenseButton = (Button) findViewById(R.id.expenseButton);
 		reportsButton = (Button) findViewById(R.id.reportsButton);
+		quitButton = (ImageButton) findViewById(R.id.quitButton);
 
 		incomeButton.setOnClickListener(incomeButtonListener);
 		expenseButton.setOnClickListener(expenseButtonListener);
 		reportsButton.setOnClickListener(reportsButtonListener);
+		quitButton.setOnClickListener(quitButtonListener);
 		// DatabaseFunctions db = new DatabaseFunctions(this);
 		DatabaseConnector connect = new DatabaseConnector(this);
 
@@ -81,6 +85,17 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			startActivity(new Intent("com.sree.finance.ReportActivity"));
+
+		}
+
+	};
+
+	private OnClickListener quitButtonListener = new OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			finish();
+			System.exit(0);
 
 		}
 
